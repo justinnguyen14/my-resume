@@ -1,0 +1,39 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: aliceblue;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.5rem;
+}
+body {
+    background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
+}
+
+.main-content {
+    padding: 40px;
+}
+
+.left-column,
+.right-column .card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.left-column {
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.project-card {
+    margin-top: 20px;
+}
+
+.card-title {
+    font-weight: bold;
+}

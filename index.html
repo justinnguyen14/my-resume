@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Resume</title>
+    <link rel="stylesheet" href="index.html">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link href="stylesheets/main.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-expand-md
+                    justify-content-start
+                    bg-dark navbar-dark
+                    col-12">
+
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">@ Justin.Nguyen14 </a>
+            <!-- Responsive Button for the smaller menu -->
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <!-- Links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutme.html">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">Projects</a>
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop"
+                           data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Contacts
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="https://www.linkedin.com/in/justin-nguyen14/">LinkedIn</a>
+                            <a class="dropdown-item" href="https://www.instagram.com/justin.nguyen14/">Instagram</a>
+                            <a class="dropdown-item" href="https://x.com/_JNguyen14">Twitter</a>
+                            <a class="dropdown-item" href="contact.html">Newsletter</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="jumbotron">
+            <div class="slides" id="slides">
+                <div class="slide" style="background-image: url('images/IMG_6133.jpg');" alt="Boston City Night Skyline"></div>
+                <div class="slide" style="background-image: url('images/IMG_2868.jpg');" alt="Palm Trees from in Honolulu Hawaii"></div>
+                <div class="slide" style="background-image: url('images/IMG_5492.jpg');" alt="New York Public Library study room"></div>
+                <div class="slide" style="background-image: url('images/IMG_5494.jpg');" alt="Computer on top of desk"></div>
+                <div class="slide" style="background-image: url('images/IMG_3559.JPEG');" alt="Cotton Candy Beach Sunset"></div>
+                <div class="slide" style="background-image: url('images/A18A7AC7-B0CE-4A17-B4F6-1D8F3C5EC761.JPG');" alt="New York Library chandelier and stairs"></div>
+                <div class="slide" style="background-image: url('images/IMG_5500.jpg');" alt="Ceiling of New York Public Library study room"></div>
+                <div class="slide" style="background-image: url('images/IMG_3244.jpg');" alt="Waterfall in Hawaii Nature Trail"></div>
+            </div>
+            <button class="nav-btn prev" onclick="prevSlide()">❮</button>
+            <button class="nav-btn next" onclick="nextSlide()">❯</button>
+            <div class="dots" id="dots"></div>
+        </div>
+        <div class="jumbotron-text">
+            <h1>Justin Thanh Nguyen</h1>
+            <p>Seeking to broaden my knowledge and eager to learn while gaining experience with industry standard application in Information Systems</p>
+        </div>
+        <div class="dots" id="dots"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer page-footer font-small ">
+        <div class="container">
+            <div class="row">
+                <span class="text-muted">&copy; Justin T. Nguyen, 2025 |  Terms Of Use  |  Privacy Statement</span>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<!-- Javascript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+</script>
+<script>
+    const slides = document.getElementById('slides');
+    const slideCount = slides.children.length;
+    let currentIndex = 0;
+
+    const dotsContainer = document.getElementById('dots');
+    for (let i = 0; i < slideCount; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        dot.onclick = () => goToSlide(i);
+        dotsContainer.appendChild(dot);
+    }
+
+    function updateSlides() {
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        document.querySelectorAll('.dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateSlides();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateSlides();
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        updateSlides();
+    }
+
+    // Auto-slide
+    setInterval(nextSlide, 5000);
+
+    updateSlides();
+</script>
+<script>
+    const slides = document.getElementById('slides');
+    const slideCount = slides.children.length;
+    let currentIndex = 0;
+
+    const dotsContainer = document.getElementById('dots');
+    for (let i = 0; i < slideCount; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        dot.onclick = () => goToSlide(i);
+        dotsContainer.appendChild(dot);
+    }
+
+    function updateSlides() {
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        document.querySelectorAll('.dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateSlides();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateSlides();
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        updateSlides();
+    }
+
+    setInterval(nextSlide, 5000);
+    updateSlides();
+</script>
+
+
+</body>
+</html>
